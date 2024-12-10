@@ -1,7 +1,6 @@
 #include <iostream>
-#include <ctime>
 #include <Windows.h>
-#include <string>
+
 void findMinMax(const int arr[], int size, int& min, int& max) {
     min = arr[0];
     max = arr[0];
