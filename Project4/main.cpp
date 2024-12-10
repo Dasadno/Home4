@@ -14,6 +14,15 @@ void findMinMax(const int arr[], int size, int& min, int& max) {
     }
 }
 
+int sumOfElementsLessThan(const int arr[], int size, int threshold) {
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        if (arr[i] < threshold) {
+            sum += arr[i];
+        }
+    }
+    return sum;
+}
 
 void findMaxMin(const int arr[], int size, int startMonth, int endMonth, int& minMonth, int& maxMonth) {
     if (startMonth < 0 || endMonth >= size || startMonth > endMonth) {
@@ -38,6 +47,42 @@ int main() {
 
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
+
+    srand(time(NULL));
+
+    const int size1 = 10;
+    int arr1[size1] = { 15, 22, 3, 42, 7, 56, 12, 8, 2, 30 };
+    int min, max;
+    findMinMax(arr1, size1, min, max);
+    std::cout << "Максимальный элемент: " << max << ", Минимальный элемент: " << min << std::endl;
+
+    const int size = 10;
+    int arr[size];
+
+    int randomMin, randomMax;
+    
+    std::cout << "Введите диапазон для заполнения случайными числами (min max)\n";
+    std::cout << "Ввод: ";
+    std::cin >> randomMin;
+    std::cout << "Ввод: ";
+    std::cin >> randomMax;
+
+    for (int i = 0; i < size; i++) {
+        arr[i] = rand() % (randomMax - randomMin + 1) + randomMin;
+    }
+
+    std::cout << "Сгенерированный массив: ";
+    for (int num : arr) {
+        std::cout << num << " ";
+    }
+    std::cout << '\n';
+
+    std::cout << "Введите порог: ";
+    int threshold;
+    std::cin >> threshold;
+
+    int sum = sumOfElementsLessThan(arr, size, threshold);
+    std::cout << "Сумма элементов, меньше заданного числа: " << sum << '\n';
 
     const int months = 12;
     int profits[months];
